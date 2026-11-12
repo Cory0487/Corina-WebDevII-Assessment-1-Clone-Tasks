@@ -1,0 +1,382 @@
+/* Import the fonts required by the assessment.
+   Protest Guerrilla is for headings.
+   Josefin Sans is for paragraphs and navigation. */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Protest+Guerrilla&display=swap');
+
+/* Store the assessment colours and spacing in reusable variables. */
+:root {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #14181d;
+  background-color: #e9e9e9;
+
+  --page-background: #e9e9e9;
+  --content-background: #ffffff;
+  --footer-background: #14181d;
+  --standard-spacing: 50px;
+}
+
+/* Include padding and borders in the calculated element width. */
+* {
+  box-sizing: border-box;
+}
+
+/* Override Vite's default centred demonstration layout. */
+body {
+  display: block;
+  place-items: initial;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--page-background);
+  color: #14181d;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Use the required display font for every heading. */
+h1,
+h2,
+h3 {
+  font-family: 'Protest Guerrilla', sans-serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* Keep links readable and consistent with the design. */
+a {
+  color: inherit;
+}
+
+/* HEADER */
+
+/* Flexbox centres the logo above the navigation links. */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--standard-spacing);
+  padding: var(--standard-spacing) 20px;
+}
+
+/* The logo must be 200px wide according to the brief. */
+.site-logo {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Arrange the navigation links horizontally with equal spacing. */
+.site-header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--standard-spacing);
+}
+
+.site-header nav a {
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  text-decoration: underline;
+}
+
+/* MAIN CONTENT */
+
+/* Centre the white article container on the grey page. */
+.blog-container {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  background-color: var(--content-background);
+}
+
+/* Give the article comfortable spacing around its text. */
+.blog-article {
+  padding: var(--standard-spacing);
+}
+
+/* Make the article title prominent, as shown in the wireframe. */
+.blog-article h1 {
+  margin: 0 0 25px;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+}
+
+/* Make the first paragraph larger than the remaining paragraphs. */
+.blog-article > p:first-of-type {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin-bottom: var(--standard-spacing);
+}
+
+/* Create the three-column article layout for desktop screens. */
+.blog-article {
+  column-count: 3;
+  column-gap: 35px;
+}
+
+/* Keep the main title and introduction across all three columns. */
+.blog-article h1,
+.blog-article > p:first-of-type {
+  column-span: all;
+}
+
+/* Style the repeated article headings. */
+.blog-article h2 {
+  margin: 0 0 15px;
+  font-size: 2.5rem;
+  break-after: avoid;
+}
+
+/* Improve paragraph readability and avoid awkward splitting. */
+.blog-article p {
+  margin: 0 0 20px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+/* GALLERY */
+
+/* Grid creates one large image and four smaller image positions. */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0;
+  width: 100%;
+}
+
+/* All images fill their grid cells without stretching. */
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-width: 0;
+}
+
+/* The first image fills the left half of the gallery. */
+.gallery-featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* The remaining four images fill the right-hand 2x2 grid. */
+.gallery-small {
+  aspect-ratio: 1 / 1;
+}
+
+/* AUTHOR */
+
+/* Flexbox places the biography beside the author photograph. */
+.author-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--standard-spacing);
+  padding: var(--standard-spacing);
+}
+
+.author-information {
+  flex: 1;
+  min-width: 0;
+}
+
+.author-section h2 {
+  margin: 0 0 20px;
+  font-size: 3rem;
+}
+
+.author-information p {
+  margin: 0 0 20px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* The author photograph must be 200px wide. */
+.author-photo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* SOCIAL MEDIA */
+
+/* Display the icons in one row, with 10px between them. */
+.social-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Each social media icon must be 50px wide. */
+.social-links a,
+.social-links img {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.social-links img {
+  object-fit: contain;
+}
+
+/* COMMENTS */
+
+/* Use a light grey background to separate the comments section. */
+.comments-section {
+  padding: var(--standard-spacing);
+  background-color: #e9e9e9;
+}
+
+.comments-section h2 {
+  margin: 0 0 25px;
+  font-size: 3rem;
+}
+
+.comments-section p {
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+
+.comments-section strong {
+  font-weight: 700;
+}
+
+/* FOOTER */
+
+/* Use the dark footer background specified in the assessment. */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: var(--standard-spacing) 20px;
+  background-color: var(--footer-background);
+  color: #ffffff;
+}
+
+.site-footer nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--standard-spacing);
+}
+
+.site-footer nav a {
+  text-decoration: none;
+}
+
+.site-footer nav a:hover,
+.site-footer nav a:focus-visible {
+  text-decoration: underline;
+}
+
+/* TABLET LAYOUT */
+
+/* Use two article columns and reduce spacing on medium screens. */
+@media (max-width: 1023px) {
+  .blog-article {
+    column-count: 2;
+    padding: 35px;
+  }
+
+  .author-section,
+  .comments-section {
+    padding: 35px;
+  }
+
+  .site-header {
+    gap: 35px;
+    padding: 35px 20px;
+  }
+}
+
+/* MOBILE LAYOUT */
+
+/* Stack content vertically to fit narrow phone screens. */
+@media (max-width: 719px) {
+  .site-header {
+    gap: 25px;
+    padding: 25px 15px;
+  }
+
+  .site-header nav,
+  .site-footer nav {
+    gap: 20px;
+  }
+
+  .blog-article {
+    column-count: 1;
+    padding: 25px;
+  }
+
+  .blog-article h1 {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .blog-article h2 {
+    font-size: 2rem;
+  }
+
+  .blog-article > p:first-of-type {
+    font-size: 1.15rem;
+  }
+
+  /* Display gallery images in two columns on phones. */
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+
+  /* Make the featured image fill the full gallery width. */
+  .gallery-featured {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .gallery-small {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Stack the author biography and photograph. */
+  .author-section {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+  }
+
+  .author-information {
+    width: 100%;
+  }
+
+  .author-section h2,
+  .comments-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .comments-section {
+    padding: 25px;
+  }
+
+  .site-footer {
+    padding: 35px 20px;
+  }
+}

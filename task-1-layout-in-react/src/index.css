@@ -1,0 +1,30 @@
+/* Reset the browser's default spacing.
+   This helps the layout behave consistently on different screens. */
+* {
+  box-sizing: border-box;
+}
+
+/* Keep the page full-width and remove unwanted default margins. */
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Allow the MyBlog stylesheet to control the page appearance. */
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+/* Let the React application use the available screen width.
+   The main content width is controlled separately in App.css. */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Prevent images from overflowing their containers by default. */
+img {
+  max-width: 100%;
+}
